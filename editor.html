@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="css/libs.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+	<title>Редактор блоков</title>
+</head>
+
+
+<body>
+	<div class="wrapper">
+		<main class="content">
+			<section class="editor">
+				<div id="editor"></div>
+			</section>
+		</main>
+	</div>
+	<script src="js/libs.min.js"></script>
+<script src="js/main.min.js"></script>
+<script src="https://unpkg.com/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</body>
+
+</html>
+
+<script>
+	require.config({
+		paths: { vs: 'https://unpkg.com/monaco-editor@0.45.0/min/vs' }
+	});
+
+	require(['vs/editor/editor.main'], function () {
+		monaco.editor.create(document.getElementById('editor'), {
+			value: `function hello() {console.log("Hello world");}`,
+			language: 'javascript',
+			theme: 'vs-dark'
+		});
+	});
+</script>
